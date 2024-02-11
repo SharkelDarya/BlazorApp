@@ -1,0 +1,84 @@
+﻿@page "/Registration"
+@inject AccountService accountService
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
+
+
+<link href="css/site.css" rel="stylesheet" />
+<div class="top-menu">
+    <div class="logo">
+        <a href="/" class="Logo">DeMarket</a>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="Szukaj...">
+        <button type="submit">Znajdz</button>
+    </div>
+    <div class="user-actions">
+        <a href="#" class="login">Zaloguj się</a>
+        <a href="#" class="support">Komunikacja z obsługą</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <ul class="menu">
+            <li class="menu-item"><a href="/category/Computers">Komputery</a></li>
+            <li class="menu-item"><a href="/category/Laptops">Laptopy</a></li>
+            <li class="menu-item"><a href="/category/Keyboards">Klawiatury</a></li>
+            <li class="menu-item"><a href="/category/Headphones">Słuchawki</a></li>
+            <li class="menu-item"><a href="/category/Printers">Drukarki</a></li>
+        </ul>
+    </div>
+    <div class="content_registration">
+        <h2>Rejestracja</h2>
+        <form>
+            <EditForm Model="@account" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <InputText @bind-Value="@account.Email" placeholder="Wpisz email"/>
+                    <ValidationMessage For="@(() => account.Email)" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <InputText type="password" @bind-Value="@account.Password" placeholder="Wpisz hasło"/>
+                    <ValidationMessage For="@(() => account.Password)" />
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Powtórz hasło</label>
+                    <InputText type="password" @bind-Value="@account.ConfirmPassword" placeholder="Wpisz hasło jeszcze raz" />
+                    <ValidationMessage For="@(() => account.ConfirmPassword)" />
+                </div>
+                <div class="form-group">
+                    <label for="city">Miasto</label>
+                    <InputText type="text" @bind-Value="@account.City" placeholder="Wpisz miasto"/>
+                    <ValidationMessage For="@(() => account.City)" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <InputText type="tel" @bind-Value="@account.Telefon" placeholder="Wpisz telefon"/>
+                    <ValidationMessage For="@(() => account.Telefon)" />
+                </div>
+                <button class="button_registration" type="submit">Zarejstrować się</button>
+                <p class="login-link">Już masz konto? <a href="/login">Zaloguj się!</a></p>
+            </EditForm>
+        </form>
+    </div>
+</div>
+
+@code {
+    Account account = new Account();
+
+    private void HandleValidSubmit()
+    {
+        CreateNewAccount();
+    }
+
+    protected async void CreateNewAccount()
+    {
+        await accountService.AddNewAccount(account);
+        NavigationManager.NavigateTo("Login");
+
+    }
+}

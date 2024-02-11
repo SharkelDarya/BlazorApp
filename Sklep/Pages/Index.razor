@@ -1,0 +1,39 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Routing
+@inject ProductsService productsService
+
+
+<link href="css/site.css" rel="stylesheet" />
+<div class="top-menu">
+    <div class="logo">
+        <a href="/" class="Logo">DeMarket</a>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="Szukaj...">
+        <button type="submit">Znajdz</button>
+    </div>
+    <div class="user-actions">
+        <a href="/Login" class="login">Zaloguj się</a>
+        <a href="#" class="support">Komunikacja z obsługą</a>
+    </div>
+</div>
+
+<div class="container">
+  <div class="sidebar">
+    <ul class="menu">
+            <li class="menu-item">
+                <a href="/category/Computers">Komputery</a>
+            </li>
+            <li class="menu-item"><a href="/category/Laptops" >Laptopy</a></li>
+            <li class="menu-item"><a href="/category/Keyboards">Klawiatury</a></li>
+            <li class="menu-item"><a href="/category/Headphones">Słuchawki</a></li>
+            <li class="menu-item"><a href="/category/Printers">Drukarki</a></li>
+    </ul>
+  </div>
+    <ProductList/>
+</div>
+
+
+@code {
+
+}

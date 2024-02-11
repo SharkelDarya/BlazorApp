@@ -1,0 +1,48 @@
+﻿@page "/Login"
+
+<link href="css/site.css" rel="stylesheet" />
+<div class="top-menu">
+    <div class="logo">
+        <a href="/" class="Logo">DeMarket</a>
+    </div>
+    <div class="search">
+        <input type="text" placeholder="Szukaj...">
+        <button type="submit">Znajdz</button>
+    </div>
+    <div class="user-actions">
+        <a href="#" class="login">Zaloguj się</a>
+        <a href="#" class="support">Komunikacja z obsługą</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <ul class="menu">
+            <li class="menu-item"><a href="/category/Computers">Komputery</a></li>
+            <li class="menu-item"><a href="/category/Laptops">Laptopy</a></li>
+            <li class="menu-item"><a href="/category/Keyboards">Klawiatury</a></li>
+            <li class="menu-item"><a href="/category/Headphones">Słuchawki</a></li>
+            <li class="menu-item"><a href="/category/Printers">Drukarki</a></li>
+        </ul>
+    </div>
+    <div class="content_login">
+        <h2>Zalogować się</h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Login</label>
+                <input type="text" id="username" name="username" placeholder="Wpisz login">
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password" placeholder="Wpisz hasło">
+            </div>
+            <button class="button_login" type="submit">Wejdz</button>
+            <p class="register-link">Nie masz konto? <a href="/Registration">Zarejestruj się!</a></p>
+        </form>
+    </div>
+</div>
+
+
+@code {
+
+}

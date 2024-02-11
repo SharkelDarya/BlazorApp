@@ -1,0 +1,98 @@
+﻿@using Sklep.Shared
+@using Sklep.Service
+@inject ProductsService productsService
+
+
+<div class="content">
+    @if(pObj  is null)
+    {
+        <p><em>Loading....</em></p>
+    }
+    else
+    {
+        @foreach (var product in pObj)
+        {
+            <div class="product">
+                <div class="product-image">
+                    <img src="@product.ImageUrl" alt="Zdjęcie towara">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">
+                        @product.Name
+                        <div class="product-rating">
+                            <img src="/icons/opinia.svg">
+                            <span class="product-rating-value">@product.Rating</span>
+                        </div>
+                    </h3>
+                    <p class="product-price">@product.Price.ToString() zł</p>
+                    <p class="product-description">@product.Description</p>
+                    <p class="product-category">Kategoria: @product.Categories</p>
+                    <a href="#" class="button">Kupić</a>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@code {
+    List<Shared.Products> pObj;
+    protected override async Task OnInitializedAsync()
+    {
+        pObj = await Task.Run(()=>productsService.GetAllProducts());
+    }
+
+    //private static List<Products> Products = new List<Products>
+    //    {
+    //        new Products
+    //        {
+    //            Id = 1,
+    //            Url ="",
+    //            Name = "Komputer AFIF TY67-1",
+    //            Categories = "Komputery",
+    //            ImageUrl = "/icons/PC1.jpg",
+    //            Price = 1990.00m,
+    //            Rating = 3.9,
+    //            Description="Świetna opcja do użytku domowego i biurowego. Wyposażony jest w procesor, wysokiej klasy kartę graficzną oraz dużą ilość pamięci RAM, co pozwala na obsługę profesjonalnych i multimedialnych aplikacji w trybie wielozadaniowym."
+    //        },
+    //        new Products
+    //        {
+    //            Id = 2,
+    //            Name = "Komputer ASFD UI-0091",
+    //            Categories = "Komputery",
+    //            ImageUrl = "/icons/pc2.jpg",
+    //            Price = 3999.99m,
+    //            Rating = 4.5,
+    //            Description="Ten komputer to połączenie wydajności i elegancji. Zaprojektowany z myślą o intensywnych zadaniach, idealnie sprawdzi się zarówno w pracy, jak i w rozrywce. Jego potężny procesor i duża ilość pamięci RAM zapewniają płynne działanie nawet przy najbardziej wymagających zadaniach."
+    //        },
+    //        new Products
+    //        {
+    //            Id = 3,
+    //            Name = "Klawiatura ExeGate LY-404",
+    //            Categories = "Klawiatury",
+    //            ImageUrl = "/icons/klawa1.jpg",
+    //            Price = 310.00m,
+    //            Rating = 4.0,
+    //            Description="Przewodowa klawiatura o klasycznym czarnym designie. Wygodne klawisze membranowe są gładkie i precyzyjnie reagują na Twoje polecenia. Do dyspozycji mamy 104 klawisz."
+    //        },
+    //        new Products
+    //        {
+    //            Id = 4,
+    //            Name = "Słuchawki EliteX Pro",
+    //            Categories = "Sluchawki",
+    //            ImageUrl = "/icons/sluch1.jpg",
+    //            Price = 349.99m,
+    //            Rating = 3.8,
+    //            Description="Doskonały wybór dla wszystkich miłośników dźwięku najwyższej jakości. Dzięki zaawansowanej technologii dźwięku, zapewniają niesamowite doświadczenie dźwiękowe, które przenosi Cię w sam środek ulubionych utworów lub filmów."
+    //        },
+    //        new Products
+    //        {
+    //            Id = 5,
+    //            Name = "Drukarka PrintPro 2000",
+    //            Categories = "Sluchawki",
+    //            ImageUrl = "/icons/druk1.jpg",
+    //            Price = 799.99m,
+    //            Rating = 4.9,
+    //            Description="Niezastąpione narzędzie dla wszystkich, którzy potrzebują wysokiej jakości wydruków w szybki i efektywny sposób. Dzięki zaawansowanej technologii drukowania, ta drukarka zapewnia wyraziste, wyraźne i profesjonalne rezultaty."
+    //        }
+    //    };
+}
