@@ -21,11 +21,13 @@ Wykorzystany Blazor WebAssembly do budowy strony klienckiej aplikacji. Wykorzyst
 - **-** **`ProductsService.cs`** - Interakcja z tabelą Products w bazie danych. Klasa zawiera metody do pobierania wszystkich produktów, dodawania nowego produktu i pobierania listy produktów według określonej kategorii przy użyciu bazy danych.
 - **-** **`Account.cs`** - Model danych dla kont służy do definiowania wymaganych pól, ich formatu i komunikatów o błędach walidacji.
 - **-** **`Products.cs`** - Model danych dla produktów z adnotacją [Key].
-- **-** **`Products.cs`** - Model danych dla produktów z adnotacją [Key].
 
 ### Razor Components
-- **-** **`Category.razor`** - 
-
+- **-** **`Category.razor`** - Strona kategorii produktów, gdzie produkty są dynamicznie ładowane w zależności od wybranej kategorii. Wykorzystuje usługę ProductsService do pobierania danych produktów i dynamicznie konwertuje nazwy kategorii na odpowiednie ciągi URL dla zapytań do bazy danych.
+- **-** **`Index.razor`** - Strona główna z górnym menu, logo i paskiem bocznym, zapewniając linki do różnych kategorii produktów. Zawiera również komponent ProductList, odpowiedzialny za dynamiczne wyświetlanie produktów w głównej części strony.
+- **-** **`Login.razor`** - Strona logowania z formularzem do wprowadzania loginu i hasła. *Funkcjonalność logowania nie została jeszcze zaimplementowana*.
+- **-** **`Registration.razor`** - Strona rejestracji z formularzem do wprowadzania e-mail, hasło, lokalizacja i numer telefonu. Korzystając z walidacji danych i AccountService, przesywa formularz i tworzy nowe konto użytkownika, po czym przekierowuje użytkownika na stronę logowania.
+- **-** **`ProductList.razor`** - Wyświetla produkty. Po pobraniu danych komponent wyświetla informacje o każdym produkcie, w tym obraz, nazwę, ocenę, cenę, opis i kategorię. Jeśli dane nie zostały załadowane, wyświetlany jest komunikat "Loading...".
 ## Developers
 
 - Darya Sharkel (https://github.com/SharkelDarya)
